@@ -6,6 +6,5 @@ host = "127.0.0.1"
 port = 8000
 
 [classifier_model]
-model_name = "openai/clip-vit-base-patch32"
+model_name = "resnet18"
 model_path = ""
-# processor_name = "openai/clip-vit-base-patch32"

@@ -3,21 +3,20 @@ from typing import Annotated
 from fastapi import APIRouter, File
 from PIL import Image
 from src.utils.config import Config
-from src.core.clip import ClipInference
+from src.core.classifier import ClassifierInference
 
 v1Router = APIRouter()
 root_config_dir = "configs"
 config = Config(root_config_dir)
-clip = ClipInference(model_name = config.clip.clip_model.model_name, processor_name = config.clip.clip_model.processor_name)
+classifier = ClassifierInference(model_name = config.classifier.classifier_model.model_name, model_path = config.classifier.classifier_model.model_path)
 
-@v1Router.post("/image-to-text", status_code=200)
+@v1Router.post("/classifier", status_code=200)
 def find_similarity(
-    file: Annotated[bytes, File()],
-    text: str
+    file: Annotated[bytes, File()]
     ) -> dict:
     img = Image.open(io.BytesIO(file))
     img = img.convert("RGB")
-    return clip.infer(img, text)
+    return classifier.infer(img)
 
 @v1Router.get("/health")
 def health():

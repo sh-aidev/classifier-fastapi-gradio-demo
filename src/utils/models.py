@@ -8,11 +8,11 @@ class ServerModel(BaseModel):
     host: str
     port: int
 
-class CLIPModel(BaseModel):
+class ClasssifierModel(BaseModel):
     model_name: str
-    processor_name: str
+    model_path: str
 
 class Model(BaseModel):
     logger: LoggerModel
     server: ServerModel
-    clip_model: CLIPModel
+    classifier_model: ClasssifierModel

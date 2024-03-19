@@ -8,9 +8,9 @@ class Logger_py:
     def __init__(self) -> None:
         self.config_root_dir = "configs"
         self.config = Config(self.config_root_dir)
-        self.logger = Logger.create_sess(os.getenv("ENVIRONMENT", self.config.clip.logger.environment))
+        self.logger = Logger.create_sess(os.getenv("ENVIRONMENT", self.config.classifier.logger.environment))
         self.logger.info(
-            f"Logger for environemnt: {str(os.getenv('ENVIRONMENT', self.config.clip.logger.environment))}"
+            f"Logger for environemnt: {str(os.getenv('ENVIRONMENT', self.config.classifier.logger.environment))}"
         )
     
     def run(self) -> Logger:

@@ -6,6 +6,6 @@ class Config:
 
     def __init__(self, root_config_path: str):
 
-        self.clip = Model(
+        self.classifier = Model(
             **toml.load(os.path.join(root_config_path, "config.toml"))
         )
